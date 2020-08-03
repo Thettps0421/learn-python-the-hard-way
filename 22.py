@@ -1,0 +1,1 @@
+print(" Just relax for 15 minutes\n it's good for you")

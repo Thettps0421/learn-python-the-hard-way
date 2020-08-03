@@ -1,0 +1,13 @@
+
+I call them “features” here (these little things you import to make your
+Python program do more) but nobody else calls them features. I just used that
+name because I needed to trick you into learning what they are without
+jargon. Before you can continue, you need to learn their real name: modules.
+From now on we will be calling these “features” that we import modules. I’ll
+say things like, “You want to import the sys module.” They are also called
+“libraries” by other programmers, but let’s just stick with modules.
+What You Should See
+Warning!
+Pay attention! You have been running python scripts without command line
+arguments. If you type only python3.6 ex13.py you are doing it wrong! Pay
+close attention to how I run it. This applies any time you see argv being used.
