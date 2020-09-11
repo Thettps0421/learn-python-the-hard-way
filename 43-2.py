@@ -1,3 +1,6 @@
+from textwrap import dedent
+from random import randint
+
 class Scene(object):
     def enter(self):
         print("This scene is not yet configured.")
@@ -30,7 +33,7 @@ class Death(Scene):
         ]
 
         def enter(self):
-            print(Deadth.quips[randint(0, len(self.quips)-1)])
+            print(Death.quips[randint(0, len(self.quips)-1)])
             exit(1)
 
 class CentralCorridor(Scene):
@@ -127,17 +130,30 @@ class EscapePod(Scene):
                 You jump into pod {guess} and hit the eject button. The pod easily slides out into space heading to the planet below. As it flies to the planet, you look back and see your ship implode then explode like a bright star, taking out the Gothon ship at the same time. You won!
                 """))
             return 'finished'
+class Finished(Scene):
+    def enter(self):
+        print("You won! Good job.")
+        return 'finished'
                 
 
 class Map(object):
+    scenes = {
+        'central_corridor': CentralCorridor(),
+        'laser_weapon_armory': LaserWeaponArmory(),
+        'the_bridge': TheBridge(),
+        'escape_pod': EscapePod(),
+        'death': Death(), 
+        'finished': Finished(),      
+    }
+    
     def __init__(self, start_scene):
-        pass
+        self.start_scene = start_scene
     
     def next_scene(self, scene_name):
-        pass
+        return Map.scenes.get(scene_name)
 
     def opening_scene(self):
-        pass
+        return self.next_scene(self.start_scene)
 
 a_map = Map('central_corridor')
 a_game = Engine(a_map)
